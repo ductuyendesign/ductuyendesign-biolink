@@ -1,0 +1,125 @@
+/*
+  DUCTUYEN DESIGN / RECENT POSTS — CSS V1
+  Paste into: Recent Posts > Advanced > Add custom CSS code.
+  No <style> tag. Fourthwall scopes this CSS to the current section.
+  These are adaptive selectors; exact Fourthwall markup may differ by theme.
+*/
+
+/* Section-level type and palette */
+:where(.recent-posts, .recent-posts-section, [class*="recent-posts"], [class*="RecentPosts"], [class*="recentPosts"]) {
+  --journal-blue: #5573c3;
+  --journal-ink: #18223b;
+  --journal-muted: #687792;
+  --journal-line: #dce4f2;
+  color: var(--journal-ink);
+  background: linear-gradient(145deg, #ffffff 0%, #f6f8ff 58%, #eaf1ff 100%);
+}
+
+/* Main section heading */
+h2,
+:where(.section-title, .section-heading, [class*="sectionTitle"], [class*="SectionTitle"]) {
+  color: #18223b !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 650 !important;
+  font-size: clamp(28px, 3vw, 44px) !important;
+  letter-spacing: -.055em !important;
+  line-height: 1.08 !important;
+}
+
+/* Post grid: only override when Fourthwall uses an identifiable grid class */
+:where(.posts-grid, .post-grid, [class*="posts-grid"], [class*="PostsGrid"], [class*="postGrid"]) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+/* Post cards */
+:where(article, .post-card, .post-item, [class*="post-card"],
+       [class*="postCard"], [class*="PostCard"],
+       [class*="post-item"], [class*="PostItem"]) {
+  min-width: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .94) !important;
+  border: 1px solid #dce4f2 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 6px 22px rgba(29, 57, 112, .06) !important;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+:where(article, .post-card, .post-item, [class*="post-card"],
+       [class*="postCard"], [class*="PostCard"],
+       [class*="post-item"], [class*="PostItem"]):hover {
+  transform: translateY(-4px);
+  border-color: #aec3ed !important;
+  box-shadow: 0 14px 32px rgba(29, 57, 112, .11) !important;
+}
+
+/* Post images */
+:where(article, .post-card, .post-item, [class*="post-card"],
+       [class*="postCard"], [class*="PostCard"]) img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Article titles and descriptions */
+:where(article, .post-card, .post-item, [class*="post-card"],
+       [class*="postCard"], [class*="PostCard"]) :is(h3, h4) {
+  color: #18223b !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(17px, 1.5vw, 21px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.035em !important;
+  line-height: 1.28 !important;
+}
+
+:where(article, .post-card, .post-item, [class*="post-card"],
+       [class*="postCard"], [class*="PostCard"]) :is(p, time, small) {
+  color: #687792;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Links and buttons */
+a { text-decoration: none; }
+a:hover { color: #5573c3; }
+:where(a, button):focus-visible { outline: 2px solid #5573c3; outline-offset: 3px; }
+:where(a[class*="button"], a[class*="Button"], .btn, button) {
+  border-radius: 999px;
+  transition: transform .2s ease, background-color .2s ease;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  :where(.posts-grid, .post-grid, [class*="posts-grid"], [class*="PostsGrid"], [class*="postGrid"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+@media (max-width: 600px) {
+  h2, :where(.section-title, .section-heading, [class*="sectionTitle"], [class*="SectionTitle"]) {
+    font-size: 30px !important;
+  }
+  :where(.posts-grid, .post-grid, [class*="posts-grid"], [class*="PostsGrid"], [class*="postGrid"]) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  :where(article, .post-card, .post-item, [class*="post-card"],
+         [class*="postCard"], [class*="PostCard"],
+         [class*="post-item"], [class*="PostItem"]) {
+    border-radius: 17px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(article, .post-card, .post-item, [class*="post-card"],
+         [class*="postCard"], [class*="PostCard"],
+         [class*="post-item"], [class*="PostItem"]) {
+    transition: none;
+  }
+  :where(article, .post-card, .post-item, [class*="post-card"],
+         [class*="postCard"], [class*="PostCard"],
+         [class*="post-item"], [class*="PostItem"]):hover {
+    transform: none;
+  }
+}
