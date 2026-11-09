@@ -1,0 +1,1 @@
+Place `profile.webp` and `avatar.webp` in this folder. Bio Link V6.5 references them using public GitHub raw URLs; upload the exact binary WebP images. Other thumbnail files may be added later as `dtartwork.webp`, `gumroad.webp`, `amazon.webp`, `portfolio.webp`.
