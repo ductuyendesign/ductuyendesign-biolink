@@ -77,6 +77,43 @@
 .dv6 .dv6-arrow .dv6-up-icon{width:19px;height:19px;transition:transform .2s}
 .dv6 .dv6-link:hover .dv6-arrow .dv6-up-icon{transform:translate(2px,-2px)}
 .dv6 .dv6-cta .dv6-up-icon{width:14px;height:14px}
+/* V6.9: Interactive Editorial | motion + focus/touch states */
+.dv6 .dv6-cta{position:relative;isolation:isolate;overflow:hidden;transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s,color .3s!important}
+.dv6 .dv6-cta:before{content:"";position:absolute;inset:0;z-index:0;background:#213d86;transform:scaleX(0);transform-origin:left center;transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.dv6 .dv6-cta-content{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+.dv6 .dv6-cta-arrow{display:inline-flex;margin-left:10px}
+.dv6 .dv6-cta-mail,.dv6 .dv6-cta-arrow svg{transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.dv6 .dv6-link{isolation:isolate;overflow:hidden;transition:transform .34s cubic-bezier(.22,1,.36,1),border-color .34s,box-shadow .34s,background .34s}
+.dv6 .dv6-link:before{content:"";position:absolute;inset:0;z-index:0;opacity:0;background:radial-gradient(ellipse at 90% 10%,#96b9f34d,transparent 54%),linear-gradient(120deg,#ffffff00 20%,#e8f0ff69 100%);transition:opacity .36s;pointer-events:none}
+.dv6 .dv6-link>*{position:relative;z-index:1}
+.dv6 .dv6-thumb:after{transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.dv6 .dv6-arrow{width:32px;height:32px;display:grid;place-items:center;flex:none;border-radius:50%;background:transparent;transition:background .32s,color .32s}
+.dv6 .dv6-link .dv6-arrow .dv6-up-icon{transition:transform .32s cubic-bezier(.22,1,.36,1)}
+@media(hover:hover) and (pointer:fine){
+  .dv6 .dv6-cta:hover{transform:translateY(-3px);color:#fff!important;box-shadow:0 14px 27px #10245859}
+  .dv6 .dv6-cta:hover:before{transform:scaleX(1)}
+  .dv6 .dv6-cta:hover .dv6-cta-mail{transform:translateY(-2px) rotate(-8deg)}
+  .dv6 .dv6-cta:hover .dv6-cta-arrow svg{transform:translate(3px,-3px)}
+  .dv6 .dv6-link:hover{transform:translateY(-4px);background:#fff;border-color:#9bb7e5;box-shadow:0 14px 32px #20396921}
+  .dv6 .dv6-link:hover:before{opacity:1}
+  .dv6 .dv6-link:hover .dv6-thumb:after{transform:scale(1.06)}
+  .dv6 .dv6-link:hover .dv6-arrow{background:#5573c3;color:#fff}
+}
+.dv6 .dv6-cta:focus-visible{color:#fff!important}
+.dv6 .dv6-cta:focus-visible:before{transform:scaleX(1)}
+.dv6 .dv6-link:focus-visible{border-color:#5573c3;box-shadow:0 0 0 3px #8dabec85}
+.dv6 .dv6-link:focus-visible:before{opacity:1}
+.dv6 .dv6-link:focus-visible .dv6-arrow{background:#5573c3;color:#fff}
+.dv6 .dv6-cta:active{transform:scale(.98)}
+.dv6 .dv6-link:active{transform:scale(.985);background:#edf3ff}
+@media(hover:none){
+  .dv6 .dv6-link:hover,.dv6 .dv6-cta:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .dv6 .dv6-cta,.dv6 .dv6-cta:before,.dv6 .dv6-cta-mail,.dv6 .dv6-cta-arrow svg,
+  .dv6 .dv6-link,.dv6 .dv6-link:before,.dv6 .dv6-thumb:after,
+  .dv6 .dv6-arrow,.dv6 .dv6-link .dv6-arrow .dv6-up-icon{transition:none!important;animation:none!important}
+}
 </style>
 <div class="dv6" aria-label="DucTuyen Design Bio Link">
   <main class="dv6-shell">
@@ -93,8 +130,11 @@
         <h1>Make<br>things.<br><em>Stay</em><br>curious.</h1>
         <p>Design, experiments, and ideas worth sharing. Welcome to my little world.</p>
         <a class="dv6-cta" href="mailto:ductuyendesign@gmail.com" aria-label="Email Duc Tuyen at ductuyendesign@gmail.com">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9 -6"/></svg>
-          Email me <span aria-hidden="true"><svg class="dv6-up-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 7l-10 10"/><path d="M8 7l9 0l0 9"/></svg></span>
+          <span class="dv6-cta-content">
+            <svg class="dv6-cta-mail" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9 -6"/></svg>
+            <span>Email me</span>
+            <span class="dv6-cta-arrow" aria-hidden="true"><svg class="dv6-up-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 7l-10 10"/><path d="M8 7l9 0l0 9"/></svg></span>
+          </span>
         </a>
       </div>
       <nav class="dv6-social" aria-label="Social profiles">
